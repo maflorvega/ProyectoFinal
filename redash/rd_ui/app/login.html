@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <title>{{name}} Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- build:css /styles/main_login.css -->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/styles/redash.css">
+    <link rel="stylesheet" href="/styles/login.css">
+    <!-- endbuild -->
+
+    
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><img src="/images/logo-fcex.png" height="40" width="220"></a> 
+    </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning" role="alert">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <div class="main">
+            {% if show_google_openid %}
+
+            <div class="row">
+                <a href="http://mansionglobal.com"><img src="/images/mansion-global-logo.svg" class="login-button"></a>
+
+            </div>
+
+            
+
+            {% endif %}
+
+            {% if show_saml_login %}
+
+            <div class="row">
+                <a href="/saml/login">SAML Login</a>
+            </div>
+
+         
+
+            {% endif %}
+
+            <form role="form" method="post" name="login">
+                
+                <div class="form-group">
+                    <label for="inputEmail">Asistente para la Generación de Conocimiento a partir de Proyectos basados en
+Scrum</label>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail">Email</label>
+                    <input type="text" class="form-control" id="inputEmail" name="email" value="{{email}}">
+                </div>
+                <div class="form-group">
+                    <!--<a class="pull-right" href="#">Forgot password?</a>-->
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control" id="inputPassword" name="password">
+                </div>
+                <div class="checkbox pull-right">
+                    <label>
+                        <input type="checkbox" name="remember">
+                        Remember me </label>
+                </div>
+
+                <button type="submit" class="btn btn btn-primary">
+                    Log In
+                </button>
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
+
+<script src="/bower_components/jquery/jquery.js"></script>
+
+<script>
+    {{ analytics|safe }}
+</script>
+
+</body>
+</html>
